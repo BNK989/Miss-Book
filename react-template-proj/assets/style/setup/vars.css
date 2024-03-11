@@ -11,4 +11,8 @@
   --gray2: rgb(155, 155, 155);
   --gray3: rgb(44, 44, 44);
 
+  --blue-base: hsl(240, 47%, 50%);
+  --blue-dark: hsl(240, 47%, 25%);
+  --blue-light: hsl(240, 47%, 75%);
+
 } 

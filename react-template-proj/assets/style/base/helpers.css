@@ -26,6 +26,14 @@
     color: var(--clr1);
 }
 
+.red{
+    color: rgb(221, 61, 61);
+}
+
+.green{
+    color: rgb(70, 131, 70);
+}
+
 /* list helpers */
 
 .clean-list {

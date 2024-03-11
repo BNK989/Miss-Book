@@ -22,7 +22,7 @@ function query(filterBy) {
     }
     if (filterBy.txt) {
       const regex = new RegExp(filterBy.txt, 'i')
-      books = books.filter((book) => regex.test(book.title + book.description))
+      books = books.filter((book) => regex.test(book.title + book.description + book.authors.join('|') + book.categories.join('|')))
     }
     if (filterBy.maxPrice) {
       books = books.filter((book) => book.listPrice.amount <= filterBy.maxPrice)

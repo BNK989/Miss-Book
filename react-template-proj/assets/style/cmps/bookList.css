@@ -37,3 +37,7 @@
 .book-list article:hover  img{
     transform: scale(1.02);
   }
+
+.sale{
+    color: var(--blue-base) ;
+}

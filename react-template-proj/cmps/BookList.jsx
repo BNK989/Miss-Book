@@ -15,9 +15,9 @@ export function BookList({books}) {
         <section className='book-list'>
             {!selectedBook &&books.map((book) => (
                 <BookPreview key={book.id} book={book} onSel={()=>setSelectedBook(book)}/>
-                // {console.log(selectedBook)}// && <BookView />}
             ))}
-            {selectedBook && <BookView book={selectedBook} onReturn={()=> setSelectedBook('')}/>}
+            {/* {selectedBook && <BookView book={selectedBook} onReturn={()=> setSelectedBook('')}/>} */}
+            {selectedBook && <BookPreview book={selectedBook} onReturn={()=> setSelectedBook('')}/>}
         </section>
     )
 }

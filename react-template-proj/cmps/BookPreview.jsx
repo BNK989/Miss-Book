@@ -5,12 +5,21 @@
 //services
 import { utilService } from '../services/util.service.js'
 
-export function BookPreview({ book, onSel}) {
+export function BookPreview({ book, onSel, onReturn}) {
+  
+    const priceClasses = () =>{
+        let classList = ''
+        if (book.listPrice.amount > 150) classList += 'red '
+        if (book.listPrice.amount < 20) classList += 'green '
+        if (book.listPrice.isOnSale) classList += 'sale '
+        return classList.trim()
+    }
 
   return (
-    <article className="book-preview" onClick={() => onSel(book)}>
+    <article className="book-preview" onClick={() => {onSel && onSel(book)}}>
+      {onReturn && <button onClick={onReturn}>BACK</button>}
       <h3>{book.title}</h3>
-      <h5 className="price-tag">{utilService.formatCurrency(book.listPrice)}</h5>
+      <h5 className={`price-tag ${priceClasses()}`}>{utilService.formatCurrency(book.listPrice)}</h5>
       <img src={`assets/img/BooksImages/${book.thumbnail}`} alt={book.title} />
       <div className="car-actions">
         <button className="remove-btn" onClick={() => onRemoveCar(car.id)}>
@@ -23,13 +32,13 @@ export function BookPreview({ book, onSel}) {
         >
           Increase speed
         </button> */}
-        <button
+        {onSel && <button
           onClick={() => {
             onSel(book)
           }}
         >
           View Book
-        </button>
+        </button>}
       </div>
     </article>
   )
