@@ -17,7 +17,7 @@ export function BookList({books}) {
                 <BookPreview key={book.id} book={book} onSel={()=>setSelectedBook(book)}/>
             ))}
             {/* {selectedBook && <BookView book={selectedBook} onReturn={()=> setSelectedBook('')}/>} */}
-            {selectedBook && <BookPreview book={selectedBook} onReturn={()=> setSelectedBook('')}/>}
+            {selectedBook && <BookPreview book={selectedBook} onReturn={()=> setSelectedBook('')} fullView={true}/>}
         </section>
     )
 }

@@ -10,7 +10,8 @@ export function Books() {
 console.log('render');
 
   useEffect(() => {
-    bookService.query(filterBy).then((books) => SetBooks([...books]))
+    bookService.query(filterBy)
+      .then((books) => SetBooks([...books]))
     //loadBooks()
   }, [filterBy])
 
@@ -25,7 +26,7 @@ console.log('render');
   const onSetFilter = (fieldsToUpdate) => { 
     setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
   }
-
+  if(!books) return <div>Loading...</div>
   return (
     <section>
       <h2>Books</h2>
