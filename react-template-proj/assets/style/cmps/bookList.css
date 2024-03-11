@@ -1,0 +1,39 @@
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-around;
+}
+
+.book-list > article {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  cursor: pointer;
+
+  img {
+    transition: transform 0.3s;
+  }
+  h3 {
+    text-transform: capitalize;
+  }
+  .price-tag {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 1.45em;
+
+    font-size: 1.2em;
+    background-color: whitesmoke;
+    padding: 0.5em;
+    border-radius: 0 0 0 0.5em;
+    transform: scale(1.02);
+  }
+}
+
+.book-list article:hover  img{
+    transform: scale(1.02);
+  }

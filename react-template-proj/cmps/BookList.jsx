@@ -11,8 +11,6 @@ import { BookView } from '../cmps/BookView.jsx'
 export function BookList({books}) {
     const [selectedBook, setSelectedBook] = useState('')
 
-
-
     return (
         <section className='book-list'>
             {!selectedBook &&books.map((book) => (

@@ -26,7 +26,7 @@ export function BookFilter({ onSetFilter, filterBy }) {
 
   console.log('filterByToEdit', filterByToEdit)
   return (
-    <section className="car-filter">
+    <section className="books-filter">
       <h2>Find Your Book</h2>
 
       <form onSubmit={onFilter}>
@@ -50,7 +50,7 @@ export function BookFilter({ onSetFilter, filterBy }) {
           placeholder="Max Price"
         />
 
-        <button>Filter</button>
+        <button className="btn">Filter</button>
       </form>
     </section>
   )
