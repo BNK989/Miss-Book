@@ -1,4 +1,5 @@
 //React
+const { Link } = ReactRouterDOM
 
 //camp
 import { LongTxt } from '../cmps/LongText.jsx';
@@ -17,29 +18,17 @@ export function BookPreview({ book, onSel, onReturn, fullView}) {
     }
 
   return (
-    <article className="book-preview" onClick={() => {onSel && onSel(book)}}>
+    <Link className="book-preview" to={`/book/details/${book.id}`}><article onClick={() => {onSel && onSel(book)}}>
       {onReturn && <button onClick={onReturn}>BACK</button>}
       <h3>{book.title}</h3>
       <h5 className={`price-tag ${priceClasses()}`}>{utilService.formatCurrency(book.listPrice)}</h5>
       <img src={`assets/img/BooksImages/${book.thumbnail}`} alt={book.title} />
       <div className="actions">
-        <button className="remove-btn" onClick={() => onRemoveCar(car.id)}>
+        <button className="remove-btn" onClick={() => onRemove(book.id)}>
           X
         </button>
-        {/* <button
-          onClick={() => {
-            onChangeSpeed(car)
-          }}
-        >
-          Increase speed
-        </button> */}
-        {onSel && <button
-          onClick={() => {
-            onSel(book)
-          }}
-        >
-          View Book
-        </button>}
+
+         <Link to={`/book/details/${book.id}`}><button className="view-btn">View Book</button></Link>
         {fullView && <div className="tags">
           {book.categories.map(c => <span key={c}>{c}</span>)}
           </div>
@@ -49,6 +38,6 @@ export function BookPreview({ book, onSel, onReturn, fullView}) {
         
         </div>
         {fullView && <LongTxt txt={book.description}/>}
-    </article>
+    </article></Link>
   )
 }

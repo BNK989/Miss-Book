@@ -1,4 +1,5 @@
 const { useEffect, useState } = React
+const { Link } = ReactRouterDOM
 
 import { BookList } from '../cmps/BookList.jsx'
 import { BookFilter } from '../cmps/BookFilter.jsx'
@@ -11,7 +12,6 @@ export function Books() {
   useEffect(() => {
     bookService.query(filterBy)
       .then((books) => SetBooks([...books]))
-    //loadBooks()
   }, [filterBy])
 
   const loadBooks = () => {
@@ -30,6 +30,7 @@ export function Books() {
     <section>
       <h2>Books</h2>
       <BookFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+      <Link to="/books/add"><button >Add Book</button></Link>
       <BookList books={books} />
     </section>
   )

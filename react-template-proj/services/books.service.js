@@ -33,6 +33,13 @@ function query(filterBy) {
 
 function get(bookId) {
   return storageService.get(BOOK_KEY, bookId)
+    .then((book) => { 
+      return getNextBookId(bookId)
+      .then(ids =>  {
+        book.siblings = ids
+        return book
+      })
+  })
 }
 
 function remove(bookId) {
@@ -65,8 +72,13 @@ function setFilterBy(filterBy = {}) {
 function getNextBookId(bookId) {
   return storageService.query(BOOK_KEY).then((books) => {
     var idx = books.findIndex((book) => book.id === bookId)
-    if (idx === books.length - 1) idx = -1
-    return books[idx + 1].id
+    if (idx === books.length - 1) return {nextBookID: books[0].id,
+                                          prevBookID: books[idx - 1].id}
+    if (idx === 0) return {nextBookID: books[idx + 1].id,
+                          prevBookID: books[books.length - 1].id}
+
+    return {nextBookID: books[idx + 1].id,
+            prevBookID: books[idx - 1].id}
   })
 }
 
