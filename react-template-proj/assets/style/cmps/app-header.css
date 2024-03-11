@@ -4,6 +4,15 @@
   padding: 1em;
 }
 
+.app-nav{
+  gap: 1em;
+}
+
+.active {
+  color: var(--blue-dark);
+  font-weight: 600;
+}
+
 @media(max-width: 720px) {
   .app-header {
     color: var(--clr2bg);
