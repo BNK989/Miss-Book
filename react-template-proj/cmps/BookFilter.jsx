@@ -24,7 +24,7 @@ export function BookFilter({ onSetFilter, filterBy }) {
     onSetFilter(filterByToEdit)
   }
 
-  console.log('filterByToEdit', filterByToEdit)
+  //console.log('filterByToEdit', filterByToEdit)
   return (
     <section className="books-filter">
       <h2>Find Your Book</h2>

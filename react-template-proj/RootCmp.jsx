@@ -9,12 +9,6 @@ import { Books } from './pages/Books-index.jsx'
 
 export function App() {
 
-  
-  const onSetPage = (ev, page) => {
-    ev.preventDefault()
-
-  }
-
   return (
     <Router>
       <section className="app">

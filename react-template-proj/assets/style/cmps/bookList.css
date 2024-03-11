@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  max-width: 10em;
 
   cursor: pointer;
 
@@ -19,6 +21,8 @@
   }
   h3 {
     text-transform: capitalize;
+    font-size: 1em;
+    text-align: center;
   }
   .price-tag {
     position: absolute;

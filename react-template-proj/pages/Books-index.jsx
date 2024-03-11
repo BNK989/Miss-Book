@@ -7,7 +7,6 @@ import { bookService } from '../services/books.service.js'
 export function Books() {
   const [books, SetBooks] = useState([])
   const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
-console.log('render');
 
   useEffect(() => {
     bookService.query(filterBy)
