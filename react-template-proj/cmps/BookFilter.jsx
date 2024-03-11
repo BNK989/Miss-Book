@@ -17,12 +17,26 @@ export function BookFilter({ onSetFilter, filterBy }) {
     onSetFilter(filterByToEdit)
   }
 
-  function handleChange({ target }) {
-    let { value, name: field, type } = target
-    if (type === 'number') value = +value
-    setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }))
-    onSetFilter(filterByToEdit)
-  }
+  const handleChange = ({ target }) => {
+    const field = target.name
+    let value = target.value
+
+    switch (target.type) {
+        case 'number':
+        case 'range':
+            value = +value || ''
+            break
+
+        case 'checkbox':
+            value = target.checked
+            break
+
+        default:
+            break
+    }
+
+    setFilterByToEdit(prevFilterByToEdit => ({ ...prevFilterByToEdit, [field]: value }))
+}
 
   //console.log('filterByToEdit', filterByToEdit)
   return (

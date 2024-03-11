@@ -30,6 +30,7 @@ export function App() {
             <Route path="/books" element={<Books />}/>
             <Route path="/book/details/:bookId" element={<BookView />}/>
             <Route path="/books/add" element={<AddBook />}/>
+            <Route path="/books/add/:bookId" element={<AddBook />}/>
             {/* <Route path="/book/edit" element={<Edit />}/> */}
           </Routes>
         </main>

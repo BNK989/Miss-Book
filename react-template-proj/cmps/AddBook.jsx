@@ -1,23 +1,95 @@
+const { useEffect, useState } = React
+const { useNavigate, useParams } = ReactRouter
 
+import { bookService } from '../services/books.service.js'
 
+export function AddBook() {
+  const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
+  const navigate = useNavigate()
+  const { bookId } = useParams()
+  console.log('book id', bookId)
 
-export function AddBook(){
+  useEffect(() => {
+    getBook()
+  }, [bookId])
 
-    return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const title = formData.get('title');
-            const price = formData.get('price');
-            bookService.add({ title, listPrice: price })
-                .then(() => location.reload())
-                .catch(err => console.error(err));
-        }}>
-            <label htmlFor="title">Title</label><br />
-            <input type="text" name="title" required /><br />
-            <label htmlFor="price">Price</label><br />
-            <input type="number" name="price" step="0.01" required /><br />
-            <button>Add</button>
-        </form>
-    )
+  const getBook = () => {
+    bookService
+      .get(bookId)
+      .then((book) => {
+        setBookToEdit((prevBook)=> {
+            prevBook.price = book.listPrice.amount
+            return {...prevBook, ...book}
+        })
+      })
+      .catch((err) => {
+        console.error("couldn't Save Book", err)
+        navigate('/books')
+      })
+  }
+
+  const onSaveBook = (ev) => {
+    ev.preventDefault()
+    bookService
+      .save(bookToEdit)
+      .then((savedBook) => {
+        console.log('book saved', savedBook)
+        navigate('/books')
+      })
+      .catch((err) => {
+        console.error('error saving car', err)
+      })
+  }
+
+  const handleChange = ({ target }) => {
+    const field = target.name
+    let value = target.value
+
+    switch (target.type) {
+      case 'number':
+      case 'range':
+        value = +value || ''
+        break
+
+      case 'checkbox':
+        value = target.checked
+        break
+
+      default:
+        break
+    }
+
+    setBookToEdit((prevBookToEdit) => ({ ...prevBookToEdit, [field]: value }))
+  }
+
+  const { title, price } = bookToEdit
+  console.log('bookToEdit', bookToEdit)
+
+  return (
+    <form onSubmit={onSaveBook}>
+      <label htmlFor="title">Title</label>
+      <input
+        type="text"
+        name="title"
+        required
+        id="title"
+        placeholder="title"
+        onChange={handleChange}
+        value={title}
+      />
+
+      <label htmlFor="price">Price</label>
+      <input
+        type="number"
+        name="price"
+        id="price"
+        placeholder="0.00"
+        required
+        onChange={handleChange}
+        value={price}
+      />
+
+      <button>Add</button>
+    </form>
+  )
 }

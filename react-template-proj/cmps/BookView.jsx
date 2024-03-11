@@ -21,21 +21,18 @@ export function BookView(){//{ book, onReturn }) {
   },[params.bookId])
 
   const getBook = () => {
+    setIsLoading(true)
     bookService.get(params.bookId)
     .then(book => {
       setBook(book)
       console.log(book.siblings)
-      setIsLoading(false)
     })
     .catch(err => {
       console.error('couldn\'t find book', err)
       navigate('/books')
     })
-    //.finally(() => setIsLoading(false))
+    .finally(() => setIsLoading(false))
   }
-
-
-  
 
     if(isLoading) return <h2>Loading...</h2>
     return (
@@ -47,6 +44,7 @@ export function BookView(){//{ book, onReturn }) {
         <p>{book.description}</p>
         <div className="actions flex justify-between">
           <Link to={`/book/details/${book.siblings.prevBookID}`}><button>Prev</button></Link>
+          <Link to={`/books/add/${book.siblings.prevBookID}`}><button>Edit Book</button></Link>
           <Link to={`/book/details/${book.siblings.nextBookID}`}><button>Next</button></Link>
         </div>
       </article>

@@ -46,7 +46,16 @@ function remove(bookId) {
   return storageService.remove(BOOK_KEY, bookId)
 }
 
-function save(book) {
+function save(simpleBook) {
+  const book = {
+      title: simpleBook.title, 
+      listPrice: { 
+        amount: simpleBook.price, 
+        currencyCode: 'USD', 
+        isOnSale: false 
+      },
+      thumbnail: '2.jpg'
+    }
   if (book.id) {
     return storageService.put(BOOK_KEY, book)
   } else {
@@ -54,8 +63,8 @@ function save(book) {
   }
 }
 
-function getEmptyBook(author = '', maxSpeed = 0) {
-  return { id: '', author, maxSpeed }
+function getEmptyBook(title = '', price = 0) {
+  return { title, price }
 }
 
 function getFilterBy() {
