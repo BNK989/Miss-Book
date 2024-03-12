@@ -12,7 +12,8 @@ export const bookService = {
   getNextBookId,
   getFilterBy,
   setFilterBy,
-  getDefaultFilter
+  getDefaultFilter,
+  getFilterFromParams
 }
 
 function query(filterBy) {
@@ -127,6 +128,15 @@ class Book {
 
 function getDefaultFilter() {
     return { txt: '', maxPrice: 0, desc: '' }
+}
+
+function getFilterFromParams(searchParams = {}) {
+  const defaultFilter = getDefaultFilter()
+  return {
+      txt: searchParams.get('txt') || defaultFilter.txt,
+      maxPrice: searchParams.get('maxPrice') || defaultFilter.maxPrice,
+      desc: searchParams.get('desc') || defaultFilter.desc
+  }
 }
 
 

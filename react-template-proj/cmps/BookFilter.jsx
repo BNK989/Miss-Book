@@ -2,14 +2,19 @@
 const { useState, useEffect } = React
 
 //camp
+const { useSearchParams } = ReactRouterDOM
 
 //services
+import { bookService } from '../services/book.service.js'
 
 export function BookFilter({ onSetFilter, filterBy }) {
-  const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const [filterByToEdit, setFilterByToEdit] = useState(bookService.getFilterFromParams(searchParams))
 
   useEffect(() => {
     onSetFilter(filterByToEdit)
+    setSearchParams(filterByToEdit)
   }, [filterByToEdit])
 
   function onFilter(ev) {

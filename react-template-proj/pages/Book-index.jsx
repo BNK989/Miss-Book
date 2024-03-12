@@ -31,8 +31,8 @@ export function Book() {
         <button>Add Book</button>
       </Link>
       {!books.length && <div className="grayout-loading"><span>Loading...</span></div>}
-      {/* <BookList books={books} /> */}
-      <DataTable books={books} />
+      <BookList books={books} />
+      {/* <DataTable books={books} /> */}
     </section>
   )
 }
