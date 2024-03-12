@@ -12,6 +12,7 @@ import { OurVision } from './cmps/OurVision.jsx'
 import { Books } from './pages/Books-index.jsx'
 import { BookView } from './cmps/BookView.jsx'
 import { AddBook } from './cmps/AddBook.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
 
 export function App() {
 
@@ -34,6 +35,8 @@ export function App() {
             {/* <Route path="/book/edit" element={<Edit />}/> */}
           </Routes>
         </main>
+
+        <UserMsg />
       </section>
     </Router>
   )

@@ -2,6 +2,7 @@ const { useEffect, useState } = React
 const { useNavigate, useParams } = ReactRouter
 
 import { bookService } from '../services/books.service.js'
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 export function AddBook() {
   const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
@@ -23,19 +24,21 @@ export function AddBook() {
         })
       })
       .catch((err) => {
-        console.error("couldn't Save Book", err)
-        navigate('/books')
+          console.error("couldn't Save Book", err)
+        //navigate('/books')
       })
+      
   }
 
   const onSaveBook = (ev) => {
     ev.preventDefault()
     bookService
-      .save(bookToEdit)
-      .then((savedBook) => {
+    .save(bookToEdit)
+    .then((savedBook) => {
         console.log('book saved', savedBook)
         navigate('/books')
-      })
+    })
+    .then(showSuccessMsg('Book saved successfully'))
       .catch((err) => {
         console.error('error saving car', err)
       })
