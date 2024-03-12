@@ -1,12 +1,23 @@
+//React Cmp Service
+const { useRef } = React
+
 const { Link, Outlet } = ReactRouterDOM
 
-import { OurVision } from './cmps/OurVision.jsx'
-import { Team } from './cmps/Team.jsx'
+import { utilService } from "../services/util.service.js";
+
 
 export function About() {
+
+  const linkRef = useRef()
+
+  const makeItBounce = () => {
+    utilService.animateCSS(linkRef.current)
+    .then(()=>console.log('animation done'))
+  }
+
   return (
     <section>
-      <h2>About Miss Book</h2>
+      <h2 onClick={makeItBounce}>About Miss Book</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id maxime
         accusantium ea reiciendis autem soluta qui! Quasi voluptate veniam
@@ -14,8 +25,8 @@ export function About() {
         labore molestias.
       </p>
 
-      <nav className="about-nav flex justify-center">
-        <Link to="/about/our-vision">Our Vision</Link>
+      <nav ref={linkRef} className="about-nav flex justify-center">
+        <Link  to="/about/our-vision">Our Vision</Link>
         <Link to="/about/team">Our Team</Link>
       </nav>
 

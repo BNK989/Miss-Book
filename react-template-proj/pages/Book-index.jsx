@@ -3,6 +3,7 @@ const { Link } = ReactRouterDOM
 
 import { BookList } from '../cmps/BookList.jsx'
 import { BookFilter } from '../cmps/BookFilter.jsx'
+import { DataTable } from '../cmps/DataTable.jsx'
 
 import { bookService } from '../services/book.service.js'
 export function Book() {
@@ -30,7 +31,8 @@ export function Book() {
         <button>Add Book</button>
       </Link>
       {!books.length && <div className="grayout-loading"><span>Loading...</span></div>}
-      <BookList books={books} />
+      {/* <BookList books={books} /> */}
+      <DataTable books={books} />
     </section>
   )
 }
