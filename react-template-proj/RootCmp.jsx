@@ -13,6 +13,7 @@ import { Book } from './pages/Book-index.jsx'
 import { BookView } from './pages/BookView.jsx'
 import { AddBook } from './cmps/AddBook.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
+import { AppFooter } from './cmps/AppFooter.jsx'
 
 //const UserMsg = lazy(() => import('./cmps/UserMsg.jsx'))
 
@@ -36,6 +37,7 @@ export function App() {
             {/* <Route path="/book/edit" element={<Edit />}/> */}
           </Routes>
         </main>
+        <AppFooter/>
 
         <UserMsg />
       </section>

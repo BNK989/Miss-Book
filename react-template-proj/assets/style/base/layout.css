@@ -7,6 +7,14 @@
 .container {
   padding: 0 1em;
   margin: auto;
+  height: 100%;
+}
+
+section.app{
+  display: grid;
+  grid-template-rows: 80px 1fr 80px;
+
+  height: 100dvh;
 }
 
 

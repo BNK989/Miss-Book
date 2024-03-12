@@ -10,6 +10,8 @@ export function About() {
 
   const linkRef = useRef()
 
+  const cmps = ['Hello', 'Hello', 'GoodBye']
+
   const makeItBounce = () => {
     utilService.animateCSS(linkRef.current)
     .then(()=>console.log('animation done'))
@@ -31,6 +33,37 @@ export function About() {
       </nav>
 
       <Outlet/>
+      <DynamicCmp cmpType={'GoodBye'} name={'Miss Book'}/>
+
+      {
+        cmps.map((cmp, idx) => <DynamicCmp key={idx} cmpType={cmp} name={'Ben'}/>)
+      }
     </section>
   )
+}
+
+
+function DynamicCmp(props) {
+  const extraProps = { extraData: 'asdasd' }
+  switch (props.cmpType) {
+      case 'Hello':
+          return <Hello {...props} {...extraProps} />
+      case 'GoodBye':
+          return <GoodBye {...props} />
+      case 'WelcomeBack':
+          return <WelcomeBack {...props} />
+  }
+}
+
+
+function Hello(props) {
+  return <h1>Hello there {props.name}</h1>
+}
+
+function GoodBye({ name }) {
+  return <h1>Bye {name}</h1>
+}
+
+function WelcomeBack({ name }) {
+  return <h1>Welcome back {name}</h1>
 }
