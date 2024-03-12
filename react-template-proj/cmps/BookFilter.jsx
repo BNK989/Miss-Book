@@ -40,7 +40,7 @@ export function BookFilter({ onSetFilter, filterBy }) {
 
   //console.log('filterByToEdit', filterByToEdit)
   return (
-    <section className="books-filter">
+    <section className="book-filter">
       <h2>Find Your Book</h2>
 
       <form onSubmit={onFilter}>

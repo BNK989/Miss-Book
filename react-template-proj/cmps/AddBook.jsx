@@ -1,7 +1,7 @@
 const { useEffect, useState } = React
 const { useNavigate, useParams } = ReactRouter
 
-import { bookService } from '../services/books.service.js'
+import { bookService } from '../services/book.service.js'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 export function AddBook() {
@@ -25,7 +25,7 @@ export function AddBook() {
       })
       .catch((err) => {
           console.error("couldn't Save Book", err)
-        //navigate('/books')
+        //navigate('/book')
       })
       
   }
@@ -36,7 +36,7 @@ export function AddBook() {
     .save(bookToEdit)
     .then((savedBook) => {
         console.log('book saved', savedBook)
-        navigate('/books')
+        navigate('/book')
     })
     .then(showSuccessMsg('Book saved successfully'))
       .catch((err) => {

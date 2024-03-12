@@ -55,3 +55,21 @@
 .sale{
     color: var(--blue-base) ;
 }
+
+.grayout-loading{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(128, 128, 128, 0.4);
+  z-index: 2;
+}
+.grayout-loading > span{
+  font-size: 2em;
+  color: white;
+}

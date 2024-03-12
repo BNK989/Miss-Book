@@ -6,7 +6,7 @@ import { Team } from './cmps/Team.jsx'
 export function About() {
   return (
     <section>
-      <h2>About Miss Books</h2>
+      <h2>About Miss Book</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id maxime
         accusantium ea reiciendis autem soluta qui! Quasi voluptate veniam

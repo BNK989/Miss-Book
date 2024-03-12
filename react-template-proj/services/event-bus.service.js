@@ -34,8 +34,6 @@ function createEventEmitter() {
 }
 
 
-
-
 // Service Testing:
 // Example for using the service
 // const unsubscribe = eventBusService.on('some-event', (data) => {
@@ -62,21 +60,5 @@ function createEventEmitter() {
 
 
 
-
-
-
-
-
 window.showSuccessMsg = showSuccessMsg
 window.showErrorMsg = showErrorMsg
-
-
-
-
-
-
-
-
-
-
-

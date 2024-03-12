@@ -1,7 +1,7 @@
-.books-filter{
+.book-filter{
     background-color: var(--clr1bg-light);
     padding: 0.2em 1em;
-    border-radius: 0 0.5em 0 0.5em;
+    border-radius: 0 0 0.5em 0.5em;
     margin: 0 0 1.2em 0;
 
     form{

@@ -18,7 +18,7 @@ export function BookPreview({ book, onSel, onReturn, fullView}) {
     }
 
   return (
-    <Link className="book-preview" to={`/book/details/${book.id}`}><article onClick={() => {onSel && onSel(book)}}>
+          <Link className="book-preview" to={`/book/details/${book.id}`}><article onClick={() => {onSel && onSel(book)}}>
       {onReturn && <button onClick={onReturn}>BACK</button>}
       <h3>{book.title}</h3>
       <h5 className={`price-tag ${priceClasses()}`}>{utilService.formatCurrency(book.listPrice)}</h5>
@@ -28,7 +28,7 @@ export function BookPreview({ book, onSel, onReturn, fullView}) {
           X
         </button>
 
-         <Link to={`/book/details/${book.id}`}><button className="view-btn">View Book</button></Link>
+        <button className="view-btn">View Book</button>
         {fullView && <div className="tags">
           {book.categories.map(c => <span key={c}>{c}</span>)}
           </div>
@@ -39,5 +39,6 @@ export function BookPreview({ book, onSel, onReturn, fullView}) {
         </div>
         {fullView && <LongTxt txt={book.description}/>}
     </article></Link>
+
   )
 }
