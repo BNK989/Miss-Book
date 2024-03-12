@@ -17,15 +17,15 @@ export function AppFooter() {
     console.log('footerStyle', footerStyle)
 
     return <footer style={footerStyle} className="app-footer full main-layout" >
-        <h3>Hello from footer</h3>
         <section>
+            <h3>Hello {`Puki`}, Pick a color</h3>
             <select onChange={(ev) => { setCmpType(ev.target.value) }}>
                 <option value="color">Color</option>
                 <option value="fontSize">Font size</option>
             </select>
         </section>
         <section>
-            {/* <DynamicCmp cmpType={cmpType} name="Puki" onChangeStyle={onChangeStyle} footerStyle={footerStyle} /> */}
+            <DynamicCmp cmpType={cmpType} onChangeStyle={onChangeStyle} footerStyle={footerStyle} />
         </section>
     </footer>
 }

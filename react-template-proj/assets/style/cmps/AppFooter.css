@@ -1,4 +1,31 @@
 .app-footer{
-    background-color: aliceblue;
+    display: grid;
+    row-gap: 0.5em;
     width: 100%;
+    padding: 0 .5em .6em;
+}
+
+.items-container{
+    gap: 1em;
+    align-items: center;
+
+    div{
+        cursor: pointer;
+        width: 4em;
+        height: 4em;
+    }
+    .selected{
+        border: 4px solid #fff;
+    }
+}
+
+.items-container{
+    gap: 1em;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
